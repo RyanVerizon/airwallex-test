@@ -5,7 +5,7 @@ function pathFromRoot(relativePath) {
 }
 
 const paths = {
-  entry: pathFromRoot('src/app/index.js'),
+  entry: pathFromRoot('src/app/index.jsx'),
   build: {
     web: pathFromRoot('web'),
     output: pathFromRoot('web/dist'),
@@ -19,6 +19,7 @@ const paths = {
     webpack: pathFromRoot('webpack'),
     app: pathFromRoot('src/app'),
     components: pathFromRoot('src/app/components'),
+    containers: pathFromRoot('src/app/containers'),
     pages: pathFromRoot('src/app/pages'),
     constants: pathFromRoot('src/app/constants'),
     helpers: pathFromRoot('src/app/helpers'),

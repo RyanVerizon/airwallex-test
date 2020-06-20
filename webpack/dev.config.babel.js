@@ -4,12 +4,13 @@ import AssetsPlugin from 'assets-webpack-plugin';
 import baseConfig from '~webpack/base.config.babel';
 import paths from '~webpack/paths';
 
-const config = Object.assign({}, baseConfig);
+const config = { ...baseConfig };
 
 config.devServer = {
   contentBase: paths.build.web,
   compress: true,
-  port: 9000
+  host: '0.0.0.0',
+  port: 9000,
 };
 
 config.optimization = {

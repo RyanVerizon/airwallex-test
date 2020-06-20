@@ -22,6 +22,7 @@ const config = {
       '~webpack': paths.alias.webpack,
       '~app': paths.alias.app,
       '~components': paths.alias.components,
+      '~containers': paths.alias.containers,
       '~pages': paths.alias.pages,
       '~constants': paths.alias.constants,
       '~helpers': paths.alias.helpers,
@@ -58,7 +59,7 @@ const config = {
           {
             loader: 'sass-loader',
             options: {
-              importer: jsonImporter,
+              importer: jsonImporter(),
             },
           },
         ],

@@ -1,0 +1,15 @@
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: $z-header;
+
+  &__logo {
+    @include font-style($type-24px, $type-32px, $color-white);
+    @include font-weight($weight-semi-bold);
+    display: inline-block;
+    padding: rem(16);
+    letter-spacing: 3px;
+  }
+}

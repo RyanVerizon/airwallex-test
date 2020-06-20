@@ -1,0 +1,88 @@
+@import '~node-normalize-scss/normalize';
+@import 'variables/colors.json';
+@import 'variables/z-indexes.json';
+@import 'variables/font-weights.json';
+@import 'variables/font-sizes.json';
+
+@function rem($pixel-value, $base: 16) {
+  @return $pixel-value / $base * 1rem;
+}
+
+@mixin clearfix {
+  &::after {
+    display: table;
+    clear: both;
+    content: '';
+  }
+}
+
+@mixin font-weight($weight) {
+  @if $weight == 'normal' {
+    font-weight: 400;
+  } @else if $weight == 'bold' {
+    font-weight: 600;
+  }
+}
+
+// sass-lint:disable no-vendor-prefixes
+@mixin font-smoothing($value: on) {
+  @if $value == on {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  } @else if $value == inherit {
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+  } @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+// sass-lint:enable no-vendor-prefixes
+
+@mixin font-style($size: inherit, $line-height: inherit, $color: inherit) {
+  color: $color;
+  font-size: $size;
+  line-height: $line-height;
+}
+
+@mixin respond-to($media) {
+  @if $media == small-only {
+    @media only screen and (max-width: (768px)) { @content; }
+
+  } @else if $media == medium-and-up {
+    @media only screen and (min-width: (768px)) { @content; }
+
+  } @else if $media == large-and-up {
+    @media only screen and (min-width: (1024px)) { @content; }
+
+  }
+}
+
+html {
+  color: $color-tundora;
+  font-family: 'open sans', sans-serif;
+  font-size: rem(16);
+  word-wrap: break-word;
+
+  * {
+    font-family: inherit; // override normalize
+    box-sizing: border-box;
+    // sass-lint:disable no-vendor-prefixes no-misspelled-properties
+    -webkit-tap-highlight-color: rgba($color-white, 0);
+    -webkit-overflow-scrolling: touch;
+    // sass-lint:enable no-vendor-prefixes no-misspelled-properties
+
+    &:before,
+    &:after {
+      box-sizing: border-box;
+    }
+  }
+
+  u,
+  strike,
+  em,
+  i,
+  a {
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,15 @@
+// Initialize
+@import '~resources/css/global';
+
+// Components
+@import 'components/header/index';
+@import 'components/footer/index';
+@import 'components/button/index';
+@import 'components/overlay/index';
+@import 'components/input-field/index';
+
+// Containers
+@import 'containers/invite-modal/index';
+
+// Pages
+@import 'pages/home/index';

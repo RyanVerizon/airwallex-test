@@ -1,0 +1,122 @@
+@mixin input-base {
+  @include font-style($type-16px, $type-24px, $color-tundora);
+  @include font-weight($weight-normal);
+  display: block;
+  width: 100%;
+  height: rem(40);
+  margin: 0;
+  padding: rem(8) rem(12);
+  transition: border-color 0.2s ease-in-out;
+  border: 1px solid $color-silver-sand;
+  border-radius: 2px;
+  outline: none;
+  background-color: $color-white;
+  z-index: $z-base;
+  appearance: none;
+
+  &:focus {
+    border-color: $color-tundora;
+  }
+
+  // fix Firefox showing a border automatically on some required fields
+  &:required {
+    box-shadow: none;
+  }
+
+  // sass-lint:disable no-vendor-prefixes
+  &::-ms-reveal {
+    display: none;
+  }
+  // sass-lint:enable no-vendor-prefixes
+}
+
+@keyframes show-error-input {
+  0% {
+    transform: scaleY(0);
+    transform-origin: 0 0;
+  }
+
+  100% {
+    transform: scaleY(1);
+    transform-origin: 0 0;
+  }
+}
+
+.input-field {
+  @include clearfix;
+  width: auto;
+  margin: 0;
+  padding: 0;
+
+  &__input-container {
+    position: relative;
+    margin-bottom: rem(24);
+  }
+
+  &__input {
+    @include input-base;
+  }
+
+  &__textarea {
+    @include input-base;
+    height: auto;
+    min-height: rem(150);
+    padding: rem(12);
+    resize: none;
+  }
+
+  &__label {
+    @include font-style($type-14px, $type-20px, $color-tundora);
+    @include font-weight($weight-demi-bold);
+    display: block;
+    width: 100%;
+    margin-bottom: rem(8);
+
+    &--required:after {
+      @include font-style($type-14px, $type-20px, $color-tundora);
+      @include font-weight($weight-demi-bold);
+      content: '*';
+    }
+  }
+
+  &__error-message {
+    @include font-style($type-12px, $type-16px, $color-thunderbird);
+    display: block;
+    position: absolute;
+    margin: rem(2) 0 0;
+    animation: show-error-input 0.2s ease-in-out;
+  }
+
+  &__default-message {
+    @include font-style($type-14px, $type-24px, $color-silver-chalice);
+    display: block;
+    margin: rem(8) 0 0;
+  }
+
+  &--error {
+    .input-field__input,
+    .select-field__select,
+    .input-field__textarea {
+      border-color: $color-thunderbird;
+
+      &:focus {
+        border-color: $color-tundora;
+      }
+    }
+  }
+
+  &--disabled {
+    border-color: $color-mercury;
+    color: $color-silver-chalice;
+
+    .input-field__label,
+    .input-field__label:after {
+      color: $color-silver-chalice;
+    }
+
+    .input-field__input,
+    .input-field__textarea {
+      background-color: $color-desert-storm;
+    }
+  }
+}

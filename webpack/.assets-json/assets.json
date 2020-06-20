@@ -1,5 +1,6 @@
 {
   "main": {
+    "css": "/dist/main.css",
     "js": "/dist/main.js"
   },
   "vendor": {

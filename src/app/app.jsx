@@ -1,8 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import Header from '~components/header';
+import Footer from '~components/footer';
+import PageHome from '~pages/home';
 
 const App = () => (
-  <div>Hello world</div>
+  <div>
+    <Header />
+    <main>
+      <PageHome />
+    </main>
+    <Footer />
+  </div>
 );
 
 export default App;

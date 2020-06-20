@@ -8,7 +8,10 @@
   "scripts": {
     "start:dev": "webpack-dev-server --open --config ./webpack/dev.config.babel.js",
     "build:dev": "$(npm bin)/webpack --config=webpack/dev.config.babel.js",
-    "lint:js": "$(npm bin)/eslint -c .eslintrc.js --fix src/**/*.jsx"
+    "lint:css": "sass-lint -v -q",
+    "lint:js": "$(npm bin)/eslint -c .eslintrc.js --fix src webpack",
+    "lint": "yarn lint:css && yarn lint:js",
+    "lint:no-fix": "yarn lint:css && $(npm bin)/eslint -c .eslintrc.js src/**/*.jsx src/**/*.js webpack"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.1",
@@ -41,6 +44,8 @@
     "node-sass": "^4.14.1",
     "node-sass-json-importer": "^4.3.0",
     "postcss-loader": "^3.0.0",
+    "sass-lint": "^1.13.1",
+    "sass-loader": "7",
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",
@@ -52,8 +57,10 @@
     "axios": "^0.19.2",
     "classnames": "^2.2.6",
     "core-js": "3",
+    "node-normalize-scss": "^8.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-modal": "^3.11.2"
   }
 }
