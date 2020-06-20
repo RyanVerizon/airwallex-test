@@ -10,15 +10,15 @@ const InviteModalApplication = ({ isLoading, onSubmit, submitStatus }) => {
     name: { value: '', valid: null },
     email: { value: '', valid: null },
     confirmEmail: { value: '', valid: null },
-  })
+  });
 
   const handleNameChange = (e) => {
     setFormItem({
       name: {
         value: e.target.value.trim(),
         valid: validateName(e.target.value),
-      }
-    });    
+      },
+    });
   };
 
   const handleEmailChange = (value, directField) => {
@@ -50,7 +50,7 @@ const InviteModalApplication = ({ isLoading, onSubmit, submitStatus }) => {
   const validateAllFields = () => {
     let valid = true;
 
-    Object.keys(formItems).forEach(item => {
+    Object.keys(formItems).forEach((item) => {
       if (formItems[item].valid !== true) {
         setFormItem({
           [item]: { ...formItems[item], valid: false },
@@ -59,65 +59,64 @@ const InviteModalApplication = ({ isLoading, onSubmit, submitStatus }) => {
       }
     });
     return valid;
-  }
+  };
 
-  const handleFormSubmit = e => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(validateAllFields());
 
     if (!validateAllFields()) {
       return false;
     }
 
-    onSubmit({
+    return onSubmit({
       name: formItems.name.value,
       email: formItems.email.value,
     });
-  }
+  };
 
   return (
-    <form className="invite-modal__form" noValidate onSubmit={ handleFormSubmit }>
+    <form className="invite-modal__form" noValidate onSubmit={handleFormSubmit}>
       <InputField
         id="name"
         name="name"
         required
-        valid={ formItems.name.valid }
+        valid={formItems.name.valid}
         placeholder="name"
         errMessage="Please type your name"
-        onBlur={ handleNameChange }
+        onBlur={handleNameChange}
       />
       <InputField
         id="email"
         name="email"
         required
-        valid={ formItems.email.valid }
+        valid={formItems.email.valid}
         placeholder="Email"
-        errMessage={ validateEmail(formItems.email.value) ? 'You email doesn\'t match your confirm email' : 'Please type your email address' }
-        onBlur={ (e) => { handleEmailChange(e.target.value.trim(), 'email') } }
+        errMessage={validateEmail(formItems.email.value) ? 'You email doesn\'t match your confirm email' : 'Please type your email address'}
+        onBlur={(e) => { handleEmailChange(e.target.value.trim(), 'email'); }}
       />
       <InputField
         id="confirm-email"
         name="confirm-email"
         required
-        valid={ formItems.confirmEmail.valid }
+        valid={formItems.confirmEmail.valid}
         placeholder="Cofirm Email"
         errMessage="Your confirm email doesn't match"
-        onBlur={ (e) => { handleEmailChange(e.target.value.trim(), 'confirmEmail') } }
+        onBlur={(e) => { handleEmailChange(e.target.value.trim(), 'confirmEmail'); }}
       />
       <Button
         htmlType="submit"
-        disabled={ isLoading }
+        disabled={isLoading}
       >
         { isLoading ? 'Sending, please wait...' : 'Send' }
       </Button>
 
-      <If condition={ submitStatus.errMessage }>
+      <If condition={submitStatus.errMessage}>
         <p className="invite-modal__submit-error">
           { submitStatus.errMessage }
         </p>
       </If>
     </form>
-  )
+  );
 };
 
 InviteModalApplication.propTypes = {
@@ -133,7 +132,6 @@ InviteModalApplication.defaultProps = {
   submitStatus: {
     errMessage: '',
   },
-  onSubmit: () => {},
 };
 
 export default InviteModalApplication;

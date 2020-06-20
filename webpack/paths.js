@@ -7,13 +7,11 @@ function pathFromRoot(relativePath) {
 const paths = {
   entry: pathFromRoot('src/app/index.jsx'),
   build: {
-    web: pathFromRoot('web'),
-    output: pathFromRoot('web/dist'),
+    output: pathFromRoot('dist'),
     assetsJson: pathFromRoot('webpack/.assets-json'),
   },
   assets: {
-    public: pathFromRoot('src/resources/public'),
-    sprites: pathFromRoot('src/resources/images'),
+    template: pathFromRoot('webpack/template/index.html'),
   },
   alias: {
     webpack: pathFromRoot('webpack'),
@@ -21,9 +19,7 @@ const paths = {
     components: pathFromRoot('src/app/components'),
     containers: pathFromRoot('src/app/containers'),
     pages: pathFromRoot('src/app/pages'),
-    constants: pathFromRoot('src/app/constants'),
     helpers: pathFromRoot('src/app/helpers'),
-    settings: pathFromRoot('src/app/settings'),
     resources: pathFromRoot('src/resources'),
     assetsJson: pathFromRoot('webpack/.assets-json'),
   },

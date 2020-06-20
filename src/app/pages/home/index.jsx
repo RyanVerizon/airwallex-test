@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import Button from '~components/button';
 import InviteModal from '~containers/invite-modal';
 
@@ -9,19 +8,23 @@ const PageHome = () => {
   return (
     <section className="home">
       <div className="home__container">
-        <h1 className="home__title">A better way <br/>to enjoy every day.</h1>
+        <h1 className="home__title">
+          A better way
+          <br />
+          to enjoy every day.
+        </h1>
         <p className="home__summary">Be the first to know when we launch.</p>
-        <Button onClick={ () => { setModalOpen(true) } }>Request an invite</Button>
+        <Button onClick={() => { setModalOpen(true); }}>Request an invite</Button>
       </div>
 
-      <If condition={ modalOpen }>
+      <If condition={modalOpen}>
         <InviteModal
-          open={ modalOpen }
-          onClose={ () => setModalOpen(false) }
+          open={modalOpen}
+          onClose={() => setModalOpen(false)}
         />
       </If>
     </section>
-  )
+  );
 };
 
 export default PageHome;

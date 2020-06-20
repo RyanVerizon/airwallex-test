@@ -2,14 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const Button = ({ className, htmlType, secondary, disabled, onClick, children }) => (
+const Button = ({
+  className, htmlType, secondary, disabled, onClick, children,
+}) => (
   <button
-    className={ classNames('button', className, {
+    className={classNames('button', className, {
       'button--secondary': secondary,
-    }) }
-    type={ htmlType }
-    disabled={ disabled }
-    onClick={ onClick }
+    })}
+    type={htmlType}
+    disabled={disabled}
+    onClick={onClick}
   >
     { children }
   </button>

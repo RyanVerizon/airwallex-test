@@ -27,44 +27,45 @@ const InviteModal = ({ onClose }) => {
         });
         setLoading(false);
       })
-      .catch(error => {
+      .catch((error) => {
         setSubmitStatus({
           code: error.code,
           errMessage: error.response?.data?.errorMessage || 'Unknown error, please try again',
         });
         setLoading(false);
-      }); 
-  }
- 
+      });
+  };
+
   return (
     <Overlay>
       <div className="invite-modal">
-        <button className="invite-modal__close" onClick={ onClose }/>
+        <button
+          className="invite-modal__close"
+          type="button"
+          aria-label="close"
+          onClick={onClose}
+        />
         <Choose>
-          <When condition={ submitStatus.code === statusCode.success }>
+          <When condition={submitStatus.code === statusCode.success}>
             <h2 className="invite-modal__heading">All Done!</h2>
-            <InviteModalSuccess />
+            <InviteModalSuccess onClose={onClose} />
           </When>
           <Otherwise>
             <h2 className="invite-modal__heading">Request an invite</h2>
             <InviteModalApplication
-              isLoading={ isLoading }
-              onSubmit={ handleSubmit }
-              submitStatus={ submitStatus }
+              isLoading={isLoading}
+              onSubmit={handleSubmit}
+              submitStatus={submitStatus}
             />
           </Otherwise>
         </Choose>
       </div>
     </Overlay>
-  )
+  );
 };
 
 InviteModal.propTypes = {
   onClose: PropTypes.func.isRequired,
-};
-
-InviteModal.defaultProps = {
-  onClose: () => {},
 };
 
 export default InviteModal;

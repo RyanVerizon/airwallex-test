@@ -7,16 +7,12 @@ const InviteModalSuccess = ({ onClose }) => (
     <p className="invite-modal__success-text">
       You will be one of the first to experience Broccoli & Co. When we launch
     </p>
-    <Button secondary onClick={ onClose }>OK</Button>
+    <Button secondary onClick={onClose}>OK</Button>
   </div>
 );
 
 InviteModalSuccess.propTypes = {
   onClose: PropTypes.func.isRequired,
-};
-
-InviteModalSuccess.defaultProps = {
-  onClose: () => {},
 };
 
 export default InviteModalSuccess;

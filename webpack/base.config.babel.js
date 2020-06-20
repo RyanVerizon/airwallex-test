@@ -1,8 +1,9 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
 import jsonImporter from 'node-sass-json-importer';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+/* eslint-enable import/no-extraneous-dependencies */
 import paths from '~webpack/paths';
-// import svgSpritesHelper from '~webpack/helpers/svg';
 
 const config = {
   entry: paths.entry,
@@ -11,22 +12,18 @@ const config = {
     filename: '[name].js',
     chunkFilename: '[name].js',
     path: paths.build.output,
-    publicPath: '/dist/',
   },
 
   resolve: {
-    modules: ['node_modules', 'src'],
+    modules: ['node_modules'],
     extensions: ['.js', '.jsx'],
     alias: {
-      web: paths.build.web,
       '~webpack': paths.alias.webpack,
       '~app': paths.alias.app,
       '~components': paths.alias.components,
       '~containers': paths.alias.containers,
       '~pages': paths.alias.pages,
-      '~constants': paths.alias.constants,
       '~helpers': paths.alias.helpers,
-      '~settings': paths.alias.settings,
       '~resources': paths.alias.resources,
       '~assets-json': paths.alias.assetsJson,
     },
@@ -76,17 +73,11 @@ const config = {
   },
 
   plugins: [
-    new CopyWebpackPlugin([
-      { from: paths.assets.public, to: 'images/public' },
-    ]),
-    // ...svgSpritesHelper({
-    //   inputPaths: [
-    //     paths.assets.sprites,
-    //   ],
-    //   baseOutputPath: '/dist',
-    //   srpiteOutputPath: 'images/sprites',
-    //   assetsJsonPath: paths.build.assetsJson,
-    // }),
+    new HtmlWebpackPlugin({
+      title: 'BROCCOLI & CO.',
+      scriptLoading: 'defer',
+      template: paths.assets.template,
+    }),
   ],
 };
 

@@ -9,6 +9,7 @@ module.exports = {
   extends: [
     'airbnb',
     'plugin:jsx-control-statements/recommended',
+    'plugin:jest/recommended',
   ],
   globals: {
     Atomics: 'readonly',
@@ -26,6 +27,13 @@ module.exports = {
     'jsx-control-statements',
   ],
   rules: {
+    'react/jsx-props-no-spreading': 'off',
+    'react/jsx-no-undef':[
+      2,
+      { "allowGlobals": true },
+    ],
+    'react/forbid-prop-types': 'off',
+    'react/button-has-type': 'off',
   },
   settings: {
     'import/resolver': {

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-
 const InputField = ({
   id,
   type,
@@ -33,7 +32,7 @@ const InputField = ({
 
   return (
     <div
-      className={ classNames(
+      className={classNames(
         'input-field',
         `input-field--${type}`,
         className,
@@ -42,68 +41,66 @@ const InputField = ({
           'input-field--error': valid === false,
           'input-field--valid': valid === true,
         },
-      ) }
+      )}
     >
-      <If condition={ label }>
+      <If condition={label}>
         <label
-          htmlFor={ id }
-          className={ classNames('input-field__label', {
+          htmlFor={id}
+          className={classNames('input-field__label', {
             'input-field__label--required': required,
-          }) }
+          })}
         >
           { label }
         </label>
       </If>
       <div className="input-field__input-container">
         <Choose>
-          <When condition={ type === 'textarea' }>
+          <When condition={type === 'textarea'}>
             <textarea
-              id={ id }
-              name={ name }
-              className={ classNames('input-field__textarea', fieldClassName) }
-              disabled={ disabled }
-              placeholder={ placeholder }
-              required={ required }
-              readOnly={ readonly }
-              onChange={ handleChange }
-              onFocus={ onFocus }
-              onBlur={ onBlur }
-              value={ value }
-              maxLength={ maxLength }
-              minLength={ minLength }
-              { ...attributes }
+              id={id}
+              name={name}
+              className={classNames('input-field__textarea', fieldClassName)}
+              disabled={disabled}
+              placeholder={placeholder}
+              required={required}
+              readOnly={readonly}
+              onChange={handleChange}
+              onFocus={onFocus}
+              onBlur={onBlur}
+              value={value}
+              {...attributes}
             />
           </When>
           <Otherwise>
             <input
-              type={ type }
-              id={ id }
-              name={ name }
-              className={ classNames('input-field__input', fieldClassName) }
-              disabled={ disabled }
-              placeholder={ placeholder }
-              required={ required }
-              readOnly={ readonly }
-              onChange={ handleChange }
-              onInput={ onInput }
-              onFocus={ onFocus }
-              onBlur={ onBlur }
-              value={ value }
-              { ...attributes }
+              type={type}
+              id={id}
+              name={name}
+              className={classNames('input-field__input', fieldClassName)}
+              disabled={disabled}
+              placeholder={placeholder}
+              required={required}
+              readOnly={readonly}
+              onChange={handleChange}
+              onInput={onInput}
+              onFocus={onFocus}
+              onBlur={onBlur}
+              value={value}
+              {...attributes}
             />
           </Otherwise>
         </Choose>
 
-        <If condition={ valid === false && errMessage }>
+        <If condition={valid === false && errMessage}>
           <div className="input-field__error-message">{ errMessage }</div>
         </If>
-        <If condition={ valid !== false && defaultMessage }>
+        <If condition={valid !== false && defaultMessage}>
           <div className="input-field__default-message">{ defaultMessage }</div>
         </If>
       </div>
     </div>
-  )
-}
+  );
+};
 
 InputField.propTypes = {
   id: PropTypes.string.isRequired,

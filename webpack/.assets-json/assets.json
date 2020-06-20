@@ -1,9 +1,12 @@
 {
   "main": {
-    "css": "/dist/main.css",
-    "js": "/dist/main.js"
+    "css": "main.css",
+    "js": "main.js"
   },
   "vendor": {
-    "js": "/dist/vendor.js"
+    "js": "vendor.js"
+  },
+  "": {
+    "html": "index.html"
   }
 }
