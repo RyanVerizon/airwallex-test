@@ -1,6 +1,6 @@
 # airwallex-test
 
-This is a Frontend Code Challenge for Airwallex using React, build with Webpack
+This is a Frontend Code Challenge for Airwallex using React, build with Webpack.
 
 ## Install
 
@@ -53,3 +53,7 @@ Only Javascript lint:
 ```bash
   yarn test
 ```
+
+## Demo
+
+To help quickly view the page, you could simply visit `demo` directory where contains latest build.
